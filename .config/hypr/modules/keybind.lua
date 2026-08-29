@@ -116,7 +116,7 @@ end)
 hl.on("window.close", function(window)
     if window and window.class and window.class:match("01KZAYRZ") then
         hl.timer(function()
-            if #hl.get_windows() == 0 then
+            if #hl.get_workspace_windows(hl.get_active_workspace().name) == 0 then
                 -- Actions to perform when NO windows are open
                 -- hl.notification.create({text = "reset submap tradingview",  timeout = 7000, font_size = 20})
                 hl.dispatch(hl.dsp.submap("reset"))
