@@ -30,7 +30,8 @@ local closeWindowBind = hl.bind(settings.mainMod .. " + C", hl.dsp.window.close(
 hl.bind(settings.mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"), { submap_universal = true })
 hl.bind(settings.mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(settings.mainMod .. " + E", hl.dsp.exec_cmd(settings.fileManager))
-hl.bind(settings.mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(settings.mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(settings.mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --allow-images -i --pre-display-cmd \"echo '%s' | cut -f 2\" | cliphist decode | wl-copy")) 
 
 hl.bind(settings.mainMod .. " + H", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind("code:49"                 , hl.dsp.exec_cmd(settings.menu))
@@ -84,6 +85,8 @@ hl.bind(settings.mainMod .. "+ CTRL + right", hl.dsp.focus({ workspace = "e+1" }
 hl.bind(settings.mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true, submap_universal = true })
 hl.bind(settings.mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, submap_universal = true })
 
+hl.bind(settings.mainMod .. " + equal", hl.dsp.layout("colresize +conf"), {  submap_universal = true })
+hl.bind(settings.mainMod .. " + minus", hl.dsp.layout("colresize -conf"), {  submap_universal = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
@@ -99,7 +102,6 @@ hl.define_submap("resize", function()
     hl.bind("left", hl.dsp.window.resize({ x = -15, y = 0, relative = true }), { repeating = true })
     hl.bind("up", hl.dsp.window.resize({ x = 0, y = -15, relative = true }), { repeating = true })
     hl.bind("down", hl.dsp.window.resize({ x = 0, y = 15, relative = true }), { repeating = true })
-
     -- Escape to exit submap
     hl.bind("escape", hl.dsp.submap("reset"))
 end)
