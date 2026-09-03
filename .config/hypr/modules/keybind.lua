@@ -30,8 +30,8 @@ local closeWindowBind = hl.bind(settings.mainMod .. " + C", hl.dsp.window.close(
 hl.bind(settings.mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"), { submap_universal = true })
 hl.bind(settings.mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(settings.mainMod .. " + E", hl.dsp.exec_cmd(settings.fileManager))
-hl.bind(settings.mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(settings.mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --allow-images -i --pre-display-cmd \"echo '%s' | cut -f 2\" | cliphist decode | wl-copy")) 
+hl.bind(settings.mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --allow-images -i --pre-display-cmd \"echo '%s' | cut -f 2\" | cliphist decode | wl-copy"), { submap_universal = true }) 
 
 hl.bind(settings.mainMod .. " + H", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind("code:49"                 , hl.dsp.exec_cmd(settings.menu))

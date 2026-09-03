@@ -176,7 +176,7 @@ local function toggleWorkspaceFloat()
     })
 end
 
-hl.bind("SUPER + SHIFT + F", toggleWorkspaceFloat)
+hl.bind("SUPER + SHIFT + F", toggleWorkspaceFloat, { submap_universal = true })
 
 local function serializeTable(val, name, skipnewlines, depth)
     skipnewlines = skipnewlines or false
