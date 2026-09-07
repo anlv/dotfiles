@@ -1,3 +1,3 @@
 #! /bin/bash
 
-paplay ./notification.ogg
+/usr/bin/paplay /home/anlv/.config/dunst/notification.ogg
