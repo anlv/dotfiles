@@ -27,7 +27,19 @@ end
 hl.bind(settings.mainMod .. " + Q", hl.dsp.exec_cmd(settings.terminal), { submap_universal = true })
 local closeWindowBind = hl.bind(settings.mainMod .. " + C", hl.dsp.window.close(), { submap_universal = true })
 -- closeWindowBind:set_enabled(false)
-hl.bind(settings.mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"), { submap_universal = true })
+
+-- Kích hoạt submap xác nhận thoát khi bấm Mod + M
+hl.bind(settings.mainMod .. " + M", hl.dsp.submap("shutdown_confirm"))
+
+hl.define_submap("shutdown_confirm", function()
+    -- Bấm Y để thực hiện lệnh thoát máy/tắt Hyprland
+    hl.bind("Y", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+    -- Bấm Escape hoặc N để hủy và quay về trạng thái bình thường
+    hl.bind("escape", hl.dsp.submap("reset"))
+    hl.bind("N", hl.dsp.submap("reset"))
+end)
+
+-- hl.bind(settings.mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"), { submap_universal = true })
 hl.bind(settings.mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(settings.mainMod .. " + E", hl.dsp.exec_cmd(settings.fileManager))
 hl.bind(settings.mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }), { submap_universal = true })
