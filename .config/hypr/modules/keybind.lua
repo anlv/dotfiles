@@ -29,11 +29,12 @@ local closeWindowBind = hl.bind(settings.mainMod .. " + C", hl.dsp.window.close(
 -- closeWindowBind:set_enabled(false)
 
 -- Kích hoạt submap xác nhận thoát khi bấm Mod + M
-hl.bind(settings.mainMod .. " + M", hl.dsp.submap("shutdown_confirm"))
+hl.bind(settings.mainMod .. " + M", hl.dsp.submap("shutdown_confirm_S_Y_N"))
 
-hl.define_submap("shutdown_confirm", function()
+hl.define_submap("shutdown_confirm_S_Y_N", function()
     -- Bấm Y để thực hiện lệnh thoát máy/tắt Hyprland
     hl.bind("Y", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+    hl.bind("S", hl.dsp.exec_cmd("shutdown now"))
     -- Bấm Escape hoặc N để hủy và quay về trạng thái bình thường
     hl.bind("escape", hl.dsp.submap("reset"))
     hl.bind("N", hl.dsp.submap("reset"))
@@ -65,15 +66,15 @@ hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 
 -- Move focus with mainMod + arrow keys
-hl.bind(settings.mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(settings.mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(settings.mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(settings.mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(settings.mainMod .. " + left",  hl.dsp.focus({ direction = "left" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + right", hl.dsp.focus({ direction = "right" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + up",    hl.dsp.focus({ direction = "up" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + down",  hl.dsp.focus({ direction = "down" }), { submap_universal = true })
 
-hl.bind(settings.mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
-hl.bind(settings.mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind(settings.mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
-hl.bind(settings.mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
+hl.bind(settings.mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }), { submap_universal = true })
+hl.bind(settings.mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }), { submap_universal = true })
 -- Switch workspaces with settings.mainMod + [0-9]
 -- Move active window to a workspace with settings.mainMod + SHIFT + [0-9]
 for i = 1, 10 do

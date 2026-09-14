@@ -5,7 +5,6 @@ hl.config({
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
-
         follow_mouse = 1,
 
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
@@ -34,3 +33,8 @@ hl.device({
     name        = "elan1300:00-04f3:3059-touchpad",
     sensitivity = 0.0,
 })
+hl.device({
+    name = "5.2-qwerty", -- Thay thế bằng tên chính xác từ hyprctl devices nếu khác
+    kb_options = "altwin:swap_alt_win,ctrl:swap_ralt_rctl",
+})
+
