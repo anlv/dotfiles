@@ -254,13 +254,19 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #00ff99;
+    color: #000000;
+}
+
+#temperature.warning {
+    background-color: #e0af68;
+    color: #1a1b26;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: #f7768e;
+    color: #1a1b26;
 }
-
 #tray {
     background-color: rgba(200, 200, 200, 0.8);
 }

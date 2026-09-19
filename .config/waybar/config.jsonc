@@ -132,7 +132,9 @@
     "temperature": {
         "thermal-zone":5,
         "critical-threshold": 80,
+        "warning-threshold": 60,
         "format": "{temperatureC}°C {icon}",
+        "format-alt": "{icon}" ,
         "format-icons": ["", "", "", "", ""]
     },
     "backlight": {

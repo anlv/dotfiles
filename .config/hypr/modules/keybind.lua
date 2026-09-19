@@ -16,7 +16,7 @@ local function focus_or_open_browser(keyword, browser_cmd)
         end
     end
 
-    if not found then
+    if not found and browser_cmd ~= nil then
         -- Không tìm thấy -> mở trình duyệt
         hl.dispatch(hl.dsp.exec_cmd(browser_cmd))
     end
@@ -44,7 +44,7 @@ end)
 hl.bind(settings.mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(settings.mainMod .. " + E", hl.dsp.exec_cmd(settings.fileManager))
 hl.bind(settings.mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }), { submap_universal = true })
-hl.bind(settings.mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --allow-images -i --pre-display-cmd \"echo '%s' | cut -f 2\" | cliphist decode | wl-copy"), { submap_universal = true }) 
+hl.bind(settings.mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --allow-images -i | cliphist decode | wl-copy"), { submap_universal = true })
 
 hl.bind(settings.mainMod .. " + H", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind("code:49"                 , hl.dsp.exec_cmd(settings.menu))
@@ -167,7 +167,6 @@ hl.define_submap("tradingview", function()
         }
     )
 
-    -- Escape to exit submap
 end)
         
 local function testLua()
