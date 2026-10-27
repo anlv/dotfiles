@@ -46,7 +46,7 @@ hl.bind(settings.mainMod .. " + E", hl.dsp.exec_cmd(settings.fileManager))
 hl.bind(settings.mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }), { submap_universal = true })
 hl.bind(settings.mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --allow-images -i | cliphist decode | wl-copy"), { submap_universal = true })
 
-hl.bind(settings.mainMod .. " + H", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
+hl.bind(settings.mainMod .. " + H", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"), { submap_universal = true })
 hl.bind("code:49"                 , hl.dsp.exec_cmd(settings.menu))
 hl.bind(settings.mainMod .. " + B", hl.dsp.exec_cmd(settings.browser))
 hl.bind(settings.mainMod .. " + P", hl.dsp.window.pseudo())
@@ -61,9 +61,9 @@ end
 )
 
 -- Screenshot
-hl.bind(settings.mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"))
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
-hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(settings.mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only"),{ submap_universal = true })
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"),{ submap_universal = true })
+hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"),{ submap_universal = true })
 
 -- Move focus with mainMod + arrow keys
 hl.bind(settings.mainMod .. " + left",  hl.dsp.focus({ direction = "left" }), { submap_universal = true })

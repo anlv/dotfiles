@@ -42,9 +42,9 @@ hl.window_rule({
     float = true
 })
 
-hl.workspace_rule({
-    workspace = "1",
-    layout = "dwindle",
-})
+--hl.workspace_rule({
+--    workspace = "1",
+--    layout = "dwindle",
+--})
 
 
